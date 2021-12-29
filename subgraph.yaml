@@ -13,29 +13,41 @@ dataSources:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
+        - Issue
+        - Redeem
+        - Deprecate
+        - Params
+        - DestroyedBlackFunds
+        - AddedBlackList
+        - RemovedBlackList
         - Approval
-        - Blacklisted
-        - Burn
-        - Mint
-        - OwnershipTransferred
-        - SetBurnBounds
         - Transfer
+        - Pause
+        - Unpause
       abis:
         - name: TusdToken
           file: ./abis/TusdToken.json
       eventHandlers:
+        - event: Issue(uint256)
+          handler: handleIssue
+        - event: Redeem(uint256)
+          handler: handleRedeem
+        - event: Deprecate(address)
+          handler: handleDeprecate
+        - event: Params(uint256,uint256)
+          handler: handleParams
+        - event: DestroyedBlackFunds(address,uint256)
+          handler: handleDestroyedBlackFunds
+        - event: AddedBlackList(address)
+          handler: handleAddedBlackList
+        - event: RemovedBlackList(address)
+          handler: handleRemovedBlackList
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
-        - event: Blacklisted(indexed address,bool)
-          handler: handleBlacklisted
-        - event: Burn(indexed address,uint256)
-          handler: handleBurn
-        - event: Mint(indexed address,uint256)
-          handler: handleMint
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: SetBurnBounds(uint256,uint256)
-          handler: handleSetBurnBounds
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
+        - event: Pause()
+          handler: handlePause
+        - event: Unpause()
+          handler: handleUnpause
       file: ./src/mapping.ts
