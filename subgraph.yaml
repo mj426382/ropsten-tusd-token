@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,7 +6,7 @@ dataSources:
     name: TusdToken
     network: ropsten
     source:
-      address: "0xa81eebb973edc64d7fb3c8d926ab41645f937b6d"
+      address: "0x1cB0906955623920c86A3963593a02a405Bb97fC"
       abi: TusdToken
     mapping:
       kind: ethereum/events
